@@ -31,12 +31,5 @@ module.exports = {
     },
   },
   plugins: [],
-  safelist: [
-    'bg-ion-navy',
-    'text-ion-navy',
-    'text-ion-green',
-    'border-ion-green-light',
-    'bg-ion-green-light',
-    // tambahkan lainnya kalau perlu
-  ],
+  
 };
