@@ -29,6 +29,7 @@ const Navbar: React.FC = () => {
         <ul className={`hidden md:flex space-x-6 ${isScrolled ? "text-gray-900" : "text-white"}`}>
           <li><a href="#" className="hover:text-gray-400">Home</a></li>
           <li><a href="#" className="hover:text-gray-400">About</a></li>
+          <li><a href="#" className="hover:text-gray-400">Products</a></li>
           <li><a href="#" className="hover:text-gray-400">Contact</a></li>
         </ul>
       </div>

@@ -21,7 +21,7 @@ const Home: NextPage = () => {
       <AboutION />
       <IonBenefits /> {/* Bagian Keunggulan */}
       <IonProducts /> {/* Bagian Produk */}
-      <JoinION /> {/* Call-to-Action */}
+      <JoinION /> {/* Call-to-Action */}   
       <Footer />
     </div>
   );
