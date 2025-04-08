@@ -6,9 +6,9 @@ const Navbar: React.FC = () => {
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
-        setIsScrolled(true); // Change color when scrolling down
+        setIsScrolled(true);
       } else {
-        setIsScrolled(false); // Keep transparent at the top
+        setIsScrolled(false);
       }
     };
 
@@ -19,7 +19,9 @@ const Navbar: React.FC = () => {
   return (
     <nav
       className={`fixed top-0 left-0 w-full z-50 p-4 transition-all duration-300 ${
-        isScrolled ? "bg-white shadow-md" : "bg-transparent"
+        isScrolled
+          ? "bg-white shadow-md backdrop-blur-md"
+          : "bg-black/40 text-white backdrop-blur-lg"
       }`}
     >
       <div className="max-w-7xl mx-auto flex justify-between items-center">

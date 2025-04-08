@@ -31,7 +31,7 @@ const JoinION: React.FC = () => {
         whileTap={{ scale: 0.95 }}
       >
         <span className="block w-24 text-sm leading-tight text-center">
-          Bergabunglah dengan kami
+          Gabung ION
         </span>
       </motion.a>
     </motion.section>

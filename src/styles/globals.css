@@ -25,3 +25,7 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans); /* ✅ Use Open Sans */
 }
+
+.home-page {
+  background-color: #40E0D0 !important; /* Force turquoise background */
+}

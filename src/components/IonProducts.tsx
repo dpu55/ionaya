@@ -15,7 +15,7 @@ const IonProducts: React.FC = () => {
             className="bg-gray-100 py-16 px-6 md:px-12 lg:px-24"
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: false, amount: 0.2 }}
+            viewport={{ once: true, amount: 0.2 }}
             variants={fadeInUp} // ✅ Apply animation
         >
             <div className="max-w-6xl mx-auto text-center">

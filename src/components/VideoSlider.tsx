@@ -2,7 +2,7 @@ import React from "react";
 
 const VideoSlider: React.FC = () => {
   return (
-    <div className="w-full h-screen relative">
+    <div id="hero-video" className="w-full h-screen relative">
       <video
         className="hidden md:block w-full h-full object-cover"
         autoPlay
