@@ -5,7 +5,7 @@ import { fadeInUp } from "../utils/animations";
 const JoinION: React.FC = () => {
   return (
     <motion.section
-      className="bg-turquoise py-16 px-6 md:px-12 lg:px-24 text-center"
+      className="bg-white py-16 px-6 md:px-12 lg:px-24 text-center"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: false, amount: 0.2 }}
@@ -19,10 +19,10 @@ const JoinION: React.FC = () => {
 
       {/* Animated Circular Button */}
       <motion.a
-        href="https://member.calerie-health.com.my/"
+        href="#"
         target="_blank"
         rel="noopener noreferrer"
-        className="relative w-40 h-40 rounded-full bg-white text-turquoise font-semibold text-center flex items-center justify-center shadow-xl border-2 border-turquoise transition mx-auto"
+        className="relative w-40 h-40 rounded-full bg-ion-navy text-ion-navy font-semibold text-center flex items-center justify-center shadow-xl border-[2px] border-ion-green-light transition mx-auto"
         whileHover={{
           scale: 1.1,
           rotate: 360,
