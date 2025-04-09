@@ -1,6 +1,6 @@
 import type { AppProps } from "next/app";
 import { Open_Sans } from "next/font/google";
-import "../styles/globals.css";
+import "@/styles/globals.css";
 
 // ✅ Load Open Sans font
 const openSans = Open_Sans({

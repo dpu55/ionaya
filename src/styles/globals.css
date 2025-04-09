@@ -1,35 +1,39 @@
-/* @import "tailwindcss"; */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* ✅ Tailwind v4 directives */
+@import "tailwindcss/preflight";
+@import "tailwindcss/utilities";
 
-
+/* 🌍 Global Custom Variables */
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --font-sans: var(--font-opensans), sans-serif; /* ✅ Add Open Sans */
+  --font-sans: var(--font-opensans, Arial, sans-serif);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-mono: var(--font-geist-mono);
-}
-
+/* 🌙 Dark mode (optional) */
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #ffffff;
-    --foreground: #171717;
+    --background: #0a0a0a;
+    --foreground: #ededed;
   }
 }
 
-/* ✅ Apply Open Sans to Body */
+/* ✅ Global Styles */
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans); /* ✅ Use Open Sans */
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
-/* .home-page {
-  background-color: #40E0D0 !important; 
-} */
+/* 🧪 Tambahan jika pakai animation on scroll atau custom font */
+html,
+body {
+  scroll-behavior: smooth;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
