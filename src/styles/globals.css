@@ -1,39 +1,37 @@
-/* ✅ Tailwind v4 directives */
-@import "tailwindcss/preflight";
-@import "tailwindcss/utilities";
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/preflight.css" layer(base);
+@import "tailwindcss/utilities.css" layer(utilities);
 
-/* 🌍 Global Custom Variables */
+@theme {
+  --font-sans: var(--font-opensans, Arial, sans-serif);
+
+  /* 🌿 ION Colors */
+  --color-ion-green: #2A8373;
+  --color-ion-green-light: #B2D9D1;
+  --color-ion-green-dark: #1F6A5E;
+
+  --color-ion-navy: #0C2E44;
+  --color-ion-navy-light: #3C5C73;
+  --color-ion-navy-dark: #081E2F;
+
+  --color-ion-gray: #F4F7F9;
+  --color-ion-gray-dark: #A0A0A0;
+
+  --color-ion-accent: #F9C846;
+
+  --color-ion-success: #3BB273;
+  --color-ion-error: #E35D6A;
+  --color-ion-warning: #F9C846;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --font-sans: var(--font-opensans, Arial, sans-serif);
 }
 
-/* 🌙 Dark mode (optional) */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-/* ✅ Global Styles */
 body {
   background-color: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-}
-
-/* 🧪 Tambahan jika pakai animation on scroll atau custom font */
-html,
-body {
-  scroll-behavior: smooth;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
 }

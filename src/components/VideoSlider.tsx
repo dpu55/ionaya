@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, PanInfo } from "framer-motion";
 
 const videos = [
   {
@@ -10,6 +10,10 @@ const videos = [
   {
     desktop: "/videos/video2.mp4",
     mobile: "/videos/video2-mobile.mp4",
+  },
+  {
+    desktop: "/videos/video3.mp4",
+    mobile: "/videos/video3-mobile.mp4",
   },
 ];
 
@@ -24,9 +28,8 @@ const VideoSlider: React.FC = () => {
     setCurrentIndex((prev) => (prev === videos.length - 1 ? 0 : prev + 1));
   };
 
-  const handleSwipe = (info: any) => {
+  const handleSwipe = (info: PanInfo) => {
     const swipe = info.offset.x;
-
     if (swipe < -50) {
       handleNext();
     } else if (swipe > 50) {
@@ -46,7 +49,7 @@ const VideoSlider: React.FC = () => {
           transition={{ duration: 1 }}
           drag="x"
           dragConstraints={{ left: 0, right: 0 }}
-          onDragEnd={(e, info) => handleSwipe(info)}
+          onDragEnd={(_, info) => handleSwipe(info)}
         >
           {/* Desktop Video */}
           <video
@@ -73,18 +76,17 @@ const VideoSlider: React.FC = () => {
       {/* Arrows */}
       <button
         onClick={handlePrev}
-        className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-200 hover:text-gray-400 hover:scale-120 transition-all duration-300 ease-in-out z-10"
+        className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-200 hover:text-gray-400 hover:scale-110 transition-all duration-300 ease-in-out z-10"
       >
         <FaChevronLeft size={32} />
       </button>
 
       <button
         onClick={handleNext}
-        className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-200 hover:text-gray-400 hover:scale-120 transition-all duration-300 ease-in-out z-10"
+        className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-200 hover:text-gray-400 hover:scale-110 transition-all duration-300 ease-in-out z-10"
       >
         <FaChevronRight size={32} />
       </button>
-
 
       {/* Slider Indicators (pill style) */}
       <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-3 z-10">
@@ -92,10 +94,11 @@ const VideoSlider: React.FC = () => {
           <button
             key={idx}
             onClick={() => setCurrentIndex(idx)}
-            className={`transition-all duration-300 ease-in-out h-2 rounded-full ${idx === currentIndex
+            className={`transition-all duration-300 ease-in-out h-2 rounded-full ${
+              idx === currentIndex
                 ? "w-8 bg-white"
                 : "w-4 bg-gray-400 bg-opacity-50 hover:bg-opacity-80"
-              }`}
+            }`}
           />
         ))}
       </div>

@@ -18,10 +18,10 @@ const Footer: React.FC = () => {
 
         {/* Social Media Icons */}
         <div className="flex justify-center space-x-6 mb-6">
-          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+          <a href="https://facebook.com/ionayaofficial/" target="_blank" rel="noopener noreferrer">
             <FontAwesomeIcon icon={faFacebook} className="text-white text-2xl hover:text-blue-500 transition" />
           </a>
-          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+          <a href="https://instagram.com/ionayaofficial/" target="_blank" rel="noopener noreferrer">
             <FontAwesomeIcon icon={faInstagram} className="text-white text-2xl hover:text-pink-500 transition" />
           </a>
           <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer">

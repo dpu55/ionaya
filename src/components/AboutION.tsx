@@ -11,10 +11,6 @@ const AboutION: React.FC = () => {
             viewport={{ once: false, amount: 0.2 }}
             variants={fadeInUp} // ✅ Apply animation
         >
-            <div className="bg-ion-green text-black p-4 rounded-md">
-                Warna ION berhasil!
-            </div>
-
             <div className="max-w-6xl mx-auto text-center">
                 <h2 className="text-3xl md:text-4xl font-bold text-turquoise mb-6">
                     Go Beyond with ION

@@ -35,7 +35,7 @@ const JoinION: React.FC = () => {
 
                 {/* Text */}
                 <span className="relative z-10 block w-24 text-sm leading-tight text-center group-hover:text-white transition-colors duration-300">
-                    Gabung ION
+                    <p>GABUNG</p><p><strong >ION</strong></p>
                 </span>
             </motion.a>
         </motion.section>
