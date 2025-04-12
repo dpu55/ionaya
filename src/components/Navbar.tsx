@@ -50,7 +50,7 @@ const Navbar: React.FC = () => {
         >
           <li><a href="#" className="hover:text-ion-green-light">Home</a></li>
           <li><a href="#" className="hover:text-ion-green-light">About</a></li>
-          <li><a href="#" className="hover:text-ion-green-light">Products</a></li>
+          <li><a href="/products" className="hover:text-ion-green-light">Products</a></li>
           <li><a href="#" className="hover:text-ion-green-light">Contact</a></li>
           <li>
             <a
@@ -84,7 +84,7 @@ const Navbar: React.FC = () => {
           <ul className="flex flex-col space-y-4 text-lg font-medium">
             <li><a href="#" onClick={toggleMenu}>Home</a></li>
             <li><a href="#" onClick={toggleMenu}>About</a></li>
-            <li><a href="#" onClick={toggleMenu}>Products</a></li>
+            <li><a href="/products" onClick={toggleMenu}>Products</a></li>
             <li><a href="#" onClick={toggleMenu}>Contact</a></li>
             <li>
               <a
