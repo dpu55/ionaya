@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { FiMenu, FiX } from "react-icons/fi";
 
 const Navbar: React.FC = () => {
@@ -48,10 +49,18 @@ const Navbar: React.FC = () => {
             isScrolled ? "text-gray-900" : "text-white"
           }`}
         >
-          <li><a href="#" className="hover:text-ion-green-light">Home</a></li>
-          <li><a href="#" className="hover:text-ion-green-light">About</a></li>
-          <li><a href="/products" className="hover:text-ion-green-light">Products</a></li>
-          <li><a href="#" className="hover:text-ion-green-light">Contact</a></li>
+          <li>
+            <Link href="#" className="hover:text-ion-green-light">Home</Link>
+          </li>
+          <li>
+            <Link href="#" className="hover:text-ion-green-light">About</Link>
+          </li>
+          <li>
+            <Link href="/products" className="hover:text-ion-green-light">Products</Link>
+          </li>
+          <li>
+            <Link href="#" className="hover:text-ion-green-light">Contact</Link>
+          </li>
           <li>
             <a
               href="https://member.ionaya.com"
@@ -78,14 +87,20 @@ const Navbar: React.FC = () => {
 
       {/* MOBILE MENU DROPDOWN */}
       {isMenuOpen && (
-        <div
-          className={`md:hidden absolute top-full left-0 w-full bg-white shadow-lg backdrop-blur-md py-6 px-4 text-gray-900`}
-        >
+        <div className="md:hidden absolute top-full left-0 w-full bg-white shadow-lg backdrop-blur-md py-6 px-4 text-gray-900">
           <ul className="flex flex-col space-y-4 text-lg font-medium">
-            <li><a href="#" onClick={toggleMenu}>Home</a></li>
-            <li><a href="#" onClick={toggleMenu}>About</a></li>
-            <li><a href="/products" onClick={toggleMenu}>Products</a></li>
-            <li><a href="#" onClick={toggleMenu}>Contact</a></li>
+            <li>
+              <Link href="#" onClick={toggleMenu}>Home</Link>
+            </li>
+            <li>
+              <Link href="#" onClick={toggleMenu}>About</Link>
+            </li>
+            <li>
+              <Link href="/products" onClick={toggleMenu}>Products</Link>
+            </li>
+            <li>
+              <Link href="#" onClick={toggleMenu}>Contact</Link>
+            </li>
             <li>
               <a
                 href="https://member.ionaya.com"
