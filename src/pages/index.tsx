@@ -18,10 +18,12 @@ const Home: NextPage = () => {
 
       <Navbar />
       <VideoSlider />
-      <AboutION />
+      <section id="AboutION" className="pt-24">
+        <AboutION />
+      </section>
       <IonBenefits /> {/* Bagian Keunggulan */}
       <IonProducts /> {/* Bagian Produk */}
-      <JoinION /> {/* Call-to-Action */}   
+      <JoinION /> {/* Call-to-Action */}
       <Footer />
     </div>
   );

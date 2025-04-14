@@ -29,7 +29,7 @@ const Navbar: React.FC = () => {
     >
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         {/* LOGO */}
-        <div className="w-16 h-auto">
+        <Link href="/" className="w-16 h-auto block">
           <Image
             src={
               isScrolled
@@ -41,7 +41,7 @@ const Navbar: React.FC = () => {
             height={32}
             className="w-full h-auto transition duration-300"
           />
-        </div>
+        </Link>
 
         {/* DESKTOP MENU */}
         <ul
@@ -50,10 +50,10 @@ const Navbar: React.FC = () => {
           }`}
         >
           <li>
-            <Link href="#" className="hover:text-ion-green-light">Home</Link>
+            <Link href="/" className="hover:text-ion-green-light">Home</Link>
           </li>
           <li>
-            <Link href="#" className="hover:text-ion-green-light">About</Link>
+            <Link href="/#AboutION" className="hover:text-ion-green-light">About</Link>
           </li>
           <li>
             <Link href="/products" className="hover:text-ion-green-light">Products</Link>
@@ -90,10 +90,10 @@ const Navbar: React.FC = () => {
         <div className="md:hidden absolute top-full left-0 w-full bg-white shadow-lg backdrop-blur-md py-6 px-4 text-gray-900">
           <ul className="flex flex-col space-y-4 text-lg font-medium">
             <li>
-              <Link href="#" onClick={toggleMenu}>Home</Link>
+              <Link href="/" onClick={toggleMenu}>Home</Link>
             </li>
             <li>
-              <Link href="#" onClick={toggleMenu}>About</Link>
+              <Link href="/#AboutION" onClick={toggleMenu}>About</Link>
             </li>
             <li>
               <Link href="/products" onClick={toggleMenu}>Products</Link>
