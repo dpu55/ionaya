@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { AnimatePresence, motion, PanInfo, Variants } from "framer-motion";
 import { useInView } from "react-intersection-observer";
@@ -7,18 +7,18 @@ import Image from "next/image";
 const slides = [
   {
     type: "video",
-    desktop: "/videos/video1.mp4",
-    mobile: "/videos/video1-mobile.mp4",
+    desktop: "a5282f80e6c88b0429f9a3f58c49c8e5",
+    mobile: "fb8f0b321ef95968348f1840141fdd21",
   },
   {
     type: "video",
-    desktop: "/videos/video2.mp4",
-    mobile: "/videos/video2-mobile.mp4",
+    desktop: "079bf5a6b7cf357e97b8af1e2dd72473",
+    mobile: "039517e93340d355de42b3566414dcb3",
   },
   {
     type: "video",
-    desktop: "/videos/video3.mp4",
-    mobile: "/videos/video3-mobile.mp4",
+    desktop: "859c5a3ffc1f4a88ef77e943041f0155",
+    mobile: "1a5f2ddb966286c788141450bb59d4b1",
   },
   /* {
     type: "image",
@@ -32,15 +32,18 @@ const slideVariants: Variants = {
     x: dir === "right" ? -300 : 300,
     opacity: 0,
   }),
-  animate: {
-    x: 0,
-    opacity: 1,
-  },
+  animate: { x: 0, opacity: 1 },
   exit: (dir: "left" | "right") => ({
     x: dir === "right" ? 300 : -300,
     opacity: 0,
   }),
 };
+
+declare global {
+  interface Window {
+    Stream?: (iframe: HTMLIFrameElement) => any;
+  }
+}
 
 const VideoSlider: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -58,15 +61,30 @@ const VideoSlider: React.FC = () => {
   };
 
   const handleSwipe = (info: PanInfo) => {
-    const swipe = info.offset.x;
-    if (swipe < -50) {
-      handleNext();
-    } else if (swipe > 50) {
-      handlePrev();
-    }
+    if (info.offset.x < -50) handleNext();
+    else if (info.offset.x > 50) handlePrev();
   };
 
   const current = slides[currentIndex];
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+
+  useEffect(() => {
+    let player: any;
+
+    const setupPlayer = () => {
+      if (current.type === "video" && iframeRef.current && window.Stream) {
+        player = window.Stream(iframeRef.current);
+        player.addEventListener("ended", handleNext);
+      }
+    };
+
+    const timer = setTimeout(setupPlayer, 1000);
+
+    return () => {
+      clearTimeout(timer);
+      if (player) player.removeEventListener("ended", handleNext);
+    };
+  }, [currentIndex, current.type]);
 
   return (
     <div id="hero-video" className="w-full relative bg-white">
@@ -89,73 +107,34 @@ const VideoSlider: React.FC = () => {
               {current.type === "video" ? (
                 <>
                   {/* Desktop Video */}
-                  <video
-                    className="hidden md:block w-full h-full object-cover"
-                    autoPlay
-                    muted
-                    playsInline
-                    onEnded={handleNext}
-                    preload="metadata"
-                    onClick={(e) => {
-                      const vid = e.currentTarget;
-                      if (vid.paused) {
-                        vid.play();
-                      } else {
-                        vid.pause();
-                      }
-                    }}
-                    onContextMenu={(e) => e.preventDefault()}
-                    disablePictureInPicture
-                    controlsList="nodownload"
-                    src={current.desktop}
-                  />
+                  <div className="hidden md:block absolute top-0 -left-0 w-full h-full overflow-hidden">
+                    <iframe
+                      key={`desktop-${currentIndex}`}
+                      ref={iframeRef}
+                      src={`https://customer-cd95u9cxbeh5szoe.cloudflarestream.com/${current.desktop}/iframe?autoplay=true&controls=false&muted=true`}
+                      style={{
+                        border: "none", position: "absolute", top: "50%", left: "50%",
+                        width: "177.77vh", // (16/9 aspect ratio dalam persen vertikal tinggi layar)
+                        height: "56.25vw", // (16/9 aspect ratio dalam persen horizontal lebar layar)
+                        transform: "translate(-50%, -50%)",
+                        minHeight: "100%",
+                        minWidth: "100%",
+                      }}
+                      allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
+                      allowFullScreen
+                    ></iframe>
+                  </div>
 
-                  {/* Mobile Video + Indicator (Wrapped) */}
-                  <div className="block md:hidden w-full relative">
-                    <video
-                      className="w-full h-full object-contain"
-                      autoPlay
-                      muted
-                      playsInline
-                      preload="metadata"
-                      onEnded={handleNext}
-                      onClick={(e) => {
-                        const vid = e.currentTarget;
-                        if (vid.paused) {
-                          vid.play();
-                        } else {
-                          vid.pause();
-                        }
-                      }}
-                      onTouchStart={(e) => {
-                        const vid = e.currentTarget;
-                        vid.pause(); // ✅ function call
-                      }}
-                      onTouchEnd={(e) => {
-                        const vid = e.currentTarget;
-                        vid.play(); // ✅ function call
-                      }}
-                      onContextMenu={(e) => {
-                        e.preventDefault(); // ✅ panggil fungsi
-                      }}
-                      disablePictureInPicture
-                      controlsList="nodownload"
-                      src={current.mobile}
-                    />
-
-                    {/* Mobile Indicator */}
-                    <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-3 z-10">
-                      {slides.map((_, idx) => (
-                        <button
-                          key={idx}
-                          onClick={() => setCurrentIndex(idx)}
-                          className={`transition-all duration-300 ease-in-out h-2 rounded-full ${idx === currentIndex
-                              ? "w-8 bg-blue-200"
-                              : "w-4 bg-gray-400 bg-opacity-50 hover:bg-opacity-80"
-                            }`}
-                        />
-                      ))}
-                    </div>
+                  {/* Mobile Video */}
+                  <div className="block md:hidden relative w-full h-full" style={{ paddingTop: "56.25%" }}>
+                    <iframe
+                      key={`mobile-${currentIndex}`}
+                      ref={iframeRef}
+                      src={`https://customer-cd95u9cxbeh5szoe.cloudflarestream.com/${current.mobile}/iframe?autoplay=true&controls=false&muted=true`}
+                      style={{ border: "none", position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }}
+                      allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
+                      allowFullScreen
+                    ></iframe>
                   </div>
                 </>
               ) : (
@@ -168,51 +147,49 @@ const VideoSlider: React.FC = () => {
                     height={1080}
                     className="hidden md:block w-full h-full object-cover"
                   />
-
                   {/* Mobile Image */}
-                  <div className="block md:hidden w-full h-full relative">
-                    <Image
-                      src={current.mobile}
-                      alt="Slide"
-                      width={720}
-                      height={1280}
-                      className="w-full h-full object-contain"
-                    />
-                    {/* Mobile Indicator */}
-                    <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 flex space-x-3 z-10">
-                      {slides.map((_, idx) => (
-                        <button
-                          key={idx}
-                          onClick={() => setCurrentIndex(idx)}
-                          className={`transition-all duration-300 ease-in-out h-2 rounded-full ${idx === currentIndex
-                              ? "w-8 bg-blue-200"
-                              : "w-4 bg-gray-400 bg-opacity-50 hover:bg-opacity-80"
-                            }`}
-                        />
-                      ))}
-                    </div>
-                  </div>
+                  <Image
+                    src={current.mobile}
+                    alt="Slide"
+                    width={720}
+                    height={1280}
+                    className="block md:hidden w-full h-full object-contain"
+                  />
                 </>
               )}
+
+              {/* Slide Indicators */}
+              <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-3 z-10">
+                {slides.map((_, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setCurrentIndex(idx)}
+                    className={`transition-all duration-300 ease-in-out h-2 rounded-full ${idx === currentIndex
+                        ? "w-8 bg-blue-200"
+                        : "w-4 bg-gray-400 bg-opacity-50 hover:bg-opacity-80"
+                      }`}
+                  />
+                ))}
+              </div>
             </motion.div>
           )}
         </AnimatePresence>
-      </div>
 
-      {/* Arrows - desktop only */}
-      <div className="hidden md:block">
-        <button
-          onClick={handlePrev}
-          className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-200 hover:text-gray-400 hover:scale-110 transition-all duration-300 ease-in-out z-10"
-        >
-          <FaChevronLeft size={32} />
-        </button>
-        <button
-          onClick={handleNext}
-          className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-200 hover:text-gray-400 hover:scale-110 transition-all duration-300 ease-in-out z-10"
-        >
-          <FaChevronRight size={32} />
-        </button>
+        {/* Navigation Arrows */}
+        <div className="hidden md:block">
+          <button
+            onClick={handlePrev}
+            className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-200 hover:text-gray-400 hover:scale-110 transition z-10"
+          >
+            <FaChevronLeft size={32} />
+          </button>
+          <button
+            onClick={handleNext}
+            className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-200 hover:text-gray-400 hover:scale-110 transition z-10"
+          >
+            <FaChevronRight size={32} />
+          </button>
+        </div>
       </div>
     </div>
   );
