@@ -71,15 +71,18 @@ const VideoSlider: React.FC = () => {
   };
 
   const current = slides[currentIndex];
-  const iframeRef = useRef<HTMLIFrameElement>(null);
+  const iframeRefDesktop = useRef<HTMLIFrameElement>(null);
+  const iframeRefMobile = useRef<HTMLIFrameElement>(null);
 
   useEffect(() => {
     let player: CloudflarePlayer | undefined;
-
     const setupPlayer = () => {
-      if (current.type === "video" && iframeRef.current && window.Stream) {
-        player = window.Stream(iframeRef.current);
-        player.addEventListener("ended", handleNext);
+      if (current.type === "video" && window.Stream) {
+        const iframe = window.innerWidth >= 768 ? iframeRefDesktop.current : iframeRefMobile.current;
+        if (iframe) {
+          player = window.Stream(iframe);
+          player.addEventListener("ended", handleNext);
+        }
       }
     };
 
@@ -112,15 +115,18 @@ const VideoSlider: React.FC = () => {
               {current.type === "video" ? (
                 <>
                   {/* Desktop Video */}
-                  <div className="hidden md:block absolute top-0 -left-0 w-full h-full overflow-hidden">
+                  <div className="hidden md:block absolute top-0 left-0 w-full h-full overflow-hidden">
                     <iframe
                       key={`desktop-${currentIndex}`}
-                      ref={iframeRef}
+                      ref={iframeRefDesktop}
                       src={`https://customer-cd95u9cxbeh5szoe.cloudflarestream.com/${current.desktop}/iframe?autoplay=true&controls=false&muted=true`}
                       style={{
-                        border: "none", position: "absolute", top: "50%", left: "50%",
-                        width: "177.77vh", // (16/9 aspect ratio dalam persen vertikal tinggi layar)
-                        height: "56.25vw", // (16/9 aspect ratio dalam persen horizontal lebar layar)
+                        border: "none",
+                        position: "absolute",
+                        top: "50%",
+                        left: "50%",
+                        width: "177.77vh",
+                        height: "56.25vw",
                         transform: "translate(-50%, -50%)",
                         minHeight: "100%",
                         minWidth: "100%",
@@ -130,32 +136,17 @@ const VideoSlider: React.FC = () => {
                     ></iframe>
                   </div>
 
-                  {/* Mobile Video + Indicator (Wrapped) */}
+                  {/* Mobile Video */}
                   <div className="block md:hidden w-full relative aspect-[9/16] overflow-hidden">
                     <iframe
-                      ref={iframeRef}
+                      ref={iframeRefMobile}
                       src={`https://customer-cd95u9cxbeh5szoe.cloudflarestream.com/${current.mobile}/iframe?autoplay=true&controls=false&muted=true`}
                       className="absolute top-0 left-0 w-full h-full"
                       loading="lazy"
                       allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
                       allowFullScreen
                     ></iframe>
-
-                    {/* Mobile Indicator */}
-                    {/* <div className="absolute bottom-3 left-1/2 transform -translate-x-1/2 flex space-x-3 z-10">
-                      {slides.map((_, idx) => (
-                        <button
-                          key={idx}
-                          onClick={() => setCurrentIndex(idx)}
-                          className={`transition-all duration-300 ease-in-out h-2 rounded-full ${idx === currentIndex
-                              ? "w-8 bg-blue-200"
-                              : "w-4 bg-gray-400 bg-opacity-50 hover:bg-opacity-80"
-                            }`}
-                        />
-                      ))}
-                    </div> */}
                   </div>
-
                 </>
               ) : (
                 <>
@@ -184,10 +175,9 @@ const VideoSlider: React.FC = () => {
                   <button
                     key={idx}
                     onClick={() => setCurrentIndex(idx)}
-                    className={`transition-all duration-300 ease-in-out h-2 rounded-full ${idx === currentIndex
-                      ? "w-8 bg-blue-200"
-                      : "w-4 bg-gray-400 bg-opacity-50 hover:bg-opacity-80"
-                      }`}
+                    className={`transition-all duration-300 ease-in-out h-2 rounded-full ${
+                      idx === currentIndex ? "w-8 bg-blue-200" : "w-4 bg-gray-400 bg-opacity-50 hover:bg-opacity-80"
+                    }`}
                   />
                 ))}
               </div>
@@ -197,16 +187,10 @@ const VideoSlider: React.FC = () => {
 
         {/* Navigation Arrows */}
         <div className="hidden md:block">
-          <button
-            onClick={handlePrev}
-            className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-200 hover:text-gray-400 hover:scale-110 transition z-10"
-          >
+          <button onClick={handlePrev} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-200 hover:text-gray-400 hover:scale-110 transition z-10">
             <FaChevronLeft size={32} />
           </button>
-          <button
-            onClick={handleNext}
-            className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-200 hover:text-gray-400 hover:scale-110 transition z-10"
-          >
+          <button onClick={handleNext} className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-200 hover:text-gray-400 hover:scale-110 transition z-10">
             <FaChevronRight size={32} />
           </button>
         </div>
