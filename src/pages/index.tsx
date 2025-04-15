@@ -18,7 +18,7 @@ const Home: NextPage = () => {
 
       <Navbar />
       <VideoSlider />
-      <section id="AboutION" className="pt-24">
+      <section id="AboutION">
         <AboutION />
       </section>
       <IonBenefits /> {/* Bagian Keunggulan */}

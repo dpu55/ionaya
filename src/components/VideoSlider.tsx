@@ -75,16 +75,16 @@ const VideoSlider: React.FC = () => {
 
   useEffect(() => {
     let player: CloudflarePlayer | undefined;
-  
+
     const setupPlayer = () => {
       if (current.type === "video" && iframeRef.current && window.Stream) {
         player = window.Stream(iframeRef.current);
         player.addEventListener("ended", handleNext);
       }
     };
-  
+
     const timer = setTimeout(setupPlayer, 1000);
-  
+
     return () => {
       clearTimeout(timer);
       if (player) player.removeEventListener("ended", handleNext);
@@ -130,17 +130,32 @@ const VideoSlider: React.FC = () => {
                     ></iframe>
                   </div>
 
-                  {/* Mobile Video */}
-                  <div className="block md:hidden relative w-full h-full" style={{ paddingTop: "56.25%" }}>
+                  {/* Mobile Video + Indicator (Wrapped) */}
+                  <div className="block md:hidden w-full relative aspect-[9/16] overflow-hidden">
                     <iframe
-                      key={`mobile-${currentIndex}`}
                       ref={iframeRef}
                       src={`https://customer-cd95u9cxbeh5szoe.cloudflarestream.com/${current.mobile}/iframe?autoplay=true&controls=false&muted=true`}
-                      style={{ border: "none", position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }}
+                      className="absolute top-0 left-0 w-full h-full"
+                      loading="lazy"
                       allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
                       allowFullScreen
                     ></iframe>
+
+                    {/* Mobile Indicator */}
+                    {/* <div className="absolute bottom-3 left-1/2 transform -translate-x-1/2 flex space-x-3 z-10">
+                      {slides.map((_, idx) => (
+                        <button
+                          key={idx}
+                          onClick={() => setCurrentIndex(idx)}
+                          className={`transition-all duration-300 ease-in-out h-2 rounded-full ${idx === currentIndex
+                              ? "w-8 bg-blue-200"
+                              : "w-4 bg-gray-400 bg-opacity-50 hover:bg-opacity-80"
+                            }`}
+                        />
+                      ))}
+                    </div> */}
                   </div>
+
                 </>
               ) : (
                 <>
@@ -164,14 +179,14 @@ const VideoSlider: React.FC = () => {
               )}
 
               {/* Slide Indicators */}
-              <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-3 z-10">
+              <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 flex space-x-3 z-10">
                 {slides.map((_, idx) => (
                   <button
                     key={idx}
                     onClick={() => setCurrentIndex(idx)}
                     className={`transition-all duration-300 ease-in-out h-2 rounded-full ${idx === currentIndex
-                        ? "w-8 bg-blue-200"
-                        : "w-4 bg-gray-400 bg-opacity-50 hover:bg-opacity-80"
+                      ? "w-8 bg-blue-200"
+                      : "w-4 bg-gray-400 bg-opacity-50 hover:bg-opacity-80"
                       }`}
                   />
                 ))}
