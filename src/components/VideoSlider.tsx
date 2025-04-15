@@ -41,8 +41,13 @@ const slideVariants: Variants = {
 
 declare global {
   interface Window {
-    Stream?: (iframe: HTMLIFrameElement) => any;
+    Stream?: (iframe: HTMLIFrameElement) => CloudflarePlayer;
   }
+}
+
+interface CloudflarePlayer {
+  addEventListener: (event: string, handler: () => void) => void;
+  removeEventListener: (event: string, handler: () => void) => void;
 }
 
 const VideoSlider: React.FC = () => {
@@ -69,17 +74,17 @@ const VideoSlider: React.FC = () => {
   const iframeRef = useRef<HTMLIFrameElement>(null);
 
   useEffect(() => {
-    let player: any;
-
+    let player: CloudflarePlayer | undefined;
+  
     const setupPlayer = () => {
       if (current.type === "video" && iframeRef.current && window.Stream) {
         player = window.Stream(iframeRef.current);
         player.addEventListener("ended", handleNext);
       }
     };
-
+  
     const timer = setTimeout(setupPlayer, 1000);
-
+  
     return () => {
       clearTimeout(timer);
       if (player) player.removeEventListener("ended", handleNext);
