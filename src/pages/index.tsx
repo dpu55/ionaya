@@ -32,14 +32,17 @@ const Home: NextPage = () => {
   );
 };
 
+interface NextI18NextUserConfig {
+  default?: unknown;
+}
+
 export async function getStaticProps({ locale }: { locale: string }) {
   const translations = await serverSideTranslations(locale, ['common', 'product']);
 
-  // Jika _nextI18Next.userConfig ada, hapus properti `default` jika ada di dalamnya.
   if (translations && translations._nextI18Next?.userConfig) {
-    const userConfigAny = translations._nextI18Next.userConfig as any;
-    if (userConfigAny.default) {
-      delete userConfigAny.default;
+    const userConfig = translations._nextI18Next.userConfig as NextI18NextUserConfig;
+    if (userConfig.default) {
+      delete userConfig.default;
     }
   }
 
@@ -49,6 +52,7 @@ export async function getStaticProps({ locale }: { locale: string }) {
     },
   };
 }
+
 
 
 
