@@ -6,7 +6,11 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizeCss: false, // ⛔️ Matikan Lightning CSS → pakai PostCSS biasa
   },
-  i18n,
+  i18n: {
+    locales: ["id", "en"],
+    defaultLocale: "id",
+    localeDetection: false, // Nonaktifkan deteksi berdasarkan preferensi browser
+  },
 };
 
 export default nextConfig;
