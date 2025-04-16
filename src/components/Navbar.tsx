@@ -1,7 +1,9 @@
+/* 'use client'; */
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { FiMenu, FiX } from "react-icons/fi";
+import LangSwitcher from "./LangSwitcher";
 
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -44,11 +46,7 @@ const Navbar: React.FC = () => {
         </Link>
 
         {/* DESKTOP MENU */}
-        <ul
-          className={`hidden md:flex space-x-6 ${
-            isScrolled ? "text-gray-900" : "text-white"
-          }`}
-        >
+        <ul className={`hidden md:flex space-x-6 ${isScrolled ? "text-gray-900" : "text-white"}`}>
           <li>
             <Link href="/" className="hover:text-ion-green-light">Home</Link>
           </li>
@@ -71,14 +69,13 @@ const Navbar: React.FC = () => {
               Login
             </a>
           </li>
+          <LangSwitcher isScrolled={isScrolled} />
         </ul>
 
         {/* MOBILE TOGGLE BUTTON */}
         <button
           onClick={toggleMenu}
-          className={`md:hidden z-50 ${
-            isScrolled ? "text-gray-900" : "text-white"
-          }`}
+          className={`md:hidden z-50 ${isScrolled ? "text-gray-900" : "text-white"}`}
           aria-label="Toggle Menu"
         >
           {isMenuOpen ? <FiX size={28} /> : <FiMenu size={28} />}
@@ -110,6 +107,8 @@ const Navbar: React.FC = () => {
                 Login
               </a>
             </li>
+            {/* Untuk mobile, override agar styling selalu seperti scrolled */}
+            <LangSwitcher isScrolled={isScrolled} mobile={true} />
           </ul>
         </div>
       )}

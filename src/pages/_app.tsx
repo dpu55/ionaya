@@ -1,7 +1,8 @@
 import type { AppProps } from "next/app";
 import { Open_Sans } from "next/font/google";
 import "@/styles/globals.css";
-import { useEffect } from 'react';
+import { useEffect } from "react";
+import { appWithTranslation } from "next-i18next"; // Import appWithTranslation
 
 // ✅ Load Open Sans font
 const openSans = Open_Sans({
@@ -10,7 +11,7 @@ const openSans = Open_Sans({
   variable: "--font-opensans", // ✅ Define the CSS variable
 });
 
-export default function App({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
     const script = document.createElement("script");
     script.src = "https://embed.videodelivery.net/embed/sdk.latest.js";
@@ -23,3 +24,6 @@ export default function App({ Component, pageProps }: AppProps) {
     </main>
   );
 }
+
+// Bungkus komponen App dengan appWithTranslation agar instance i18next terinisialisasi
+export default appWithTranslation(MyApp);

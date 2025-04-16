@@ -1,0 +1,20 @@
+{
+    "products": [
+      {
+        "id": 1,
+        "name": "Vitera",
+        "price": "Rp1.300.000 (60 CV)",
+        "image": "/images/product2.jpg",
+        "description": "Mengandung mikroalga Tetraselmis chuii dan fiber prebiotik presisi. Kombinasi manfaat antioksidan tinggi dan mikrobioma baik untuk solusi kesehatan yang menyeluruh."
+      },
+      {
+        "id": 2,
+        "name": "Magna",
+        "price": "Rp750.000 (30 CV)",
+        "image": "/images/product3.jpg",
+        "description": "Minuman sumber energi alami dengan madu dan ginseng."
+      }
+    ],
+    "detailProduct": "Detail Produk"
+  }
+  

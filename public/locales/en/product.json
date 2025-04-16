@@ -1,0 +1,20 @@
+{
+    "products": [
+      {
+        "id": 1,
+        "name": "Vitera",
+        "price": "IDR 1,300,000 (60 CV)",
+        "image": "/images/product2.jpg",
+        "description": "Contains Tetraselmis chuii microalgae and precision prebiotic fiber. A combination of high antioxidant benefits and a healthy microbiome for comprehensive wellness."
+      },
+      {
+        "id": 2,
+        "name": "Magna",
+        "price": "IDR 750,000 (30 CV)",
+        "image": "/images/product3.jpg",
+        "description": "A natural energy drink with honey and ginseng."
+      }
+    ],
+    "detailProduct": "Product Detail"
+  }
+  
