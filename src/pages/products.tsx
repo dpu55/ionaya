@@ -27,7 +27,7 @@ const ProductsPage: React.FC = () => {
     <>
       <Head>
         {/* Gunakan template literal untuk memastikan nilai title merupakan string */}
-        <title>{`${t('common:catalogTitle', 'Katalog Produk')} | Ionaya`}</title>
+        <title>{`${t('common:catalogTitle', 'Katalog Produk')} | ION`}</title>
         <meta
           name="description"
           content={t(

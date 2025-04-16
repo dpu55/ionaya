@@ -36,7 +36,7 @@ const LangSwitcher = ({ isScrolled, mobile = false }: LangSwitcherProps) => {
   }, []);
 
   // Short label: hanya menampilkan "EN" atau "ID"
-  const shortLabel = locale === "en" ? "EN" : "ID";
+  const shortLabel = locale === "id" ? "ID" : "EN";
 
   // Jika dalam mode mobile, override isScrolled menjadi true
   const appliedScrolled = mobile ? true : isScrolled;
@@ -66,16 +66,16 @@ const LangSwitcher = ({ isScrolled, mobile = false }: LangSwitcherProps) => {
       {open && (
         <div className={dropdownClasses}>
           <button
-            onClick={() => handleLanguageChange("en")}
-            className={dropdownItemClasses}
-          >
-            English - EN
-          </button>
-          <button
             onClick={() => handleLanguageChange("id")}
             className={dropdownItemClasses}
           >
             Bahasa Indonesia - ID
+          </button>
+          <button
+            onClick={() => handleLanguageChange("en")}
+            className={dropdownItemClasses}
+          >
+            English - EN
           </button>
         </div>
       )}
