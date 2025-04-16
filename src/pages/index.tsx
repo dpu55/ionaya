@@ -15,7 +15,7 @@ const Home: NextPage = () => {
   return (
     <div className="home-page">
       <Head>
-        <title>ION</title>
+        <title>{t("ion", "ION")}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
