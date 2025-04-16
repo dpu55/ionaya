@@ -33,11 +33,14 @@ const Home: NextPage = () => {
 };
 
 export async function getStaticProps({ locale }: { locale: string }) {
-  const translations = await serverSideTranslations(locale, ['common']);
+  const translations = await serverSideTranslations(locale, ['common', 'product']);
 
-  // Hapus properti `default` dari userConfig yang tidak bisa diserialisasi
-  if (translations && translations._nextI18Next?.userConfig?.default) {
-    delete translations._nextI18Next.userConfig.default;
+  // Jika _nextI18Next.userConfig ada, hapus properti `default` jika ada di dalamnya.
+  if (translations && translations._nextI18Next?.userConfig) {
+    const userConfigAny = translations._nextI18Next.userConfig as any;
+    if (userConfigAny.default) {
+      delete userConfigAny.default;
+    }
   }
 
   return {
@@ -46,6 +49,7 @@ export async function getStaticProps({ locale }: { locale: string }) {
     },
   };
 }
+
 
 
 export default Home;
