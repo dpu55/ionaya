@@ -89,16 +89,16 @@ const Navbar: React.FC = () => {
         <div className="md:hidden absolute top-full left-0 w-full bg-white shadow-lg backdrop-blur-md py-6 px-4 text-gray-900">
           <ul className="flex flex-col space-y-4 text-lg font-medium">
             <li>
-              <Link href="/" onClick={toggleMenu}>Home</Link>
+              <Link href="/" onClick={toggleMenu}>{t("homenav", "Home")}</Link>
             </li>
             <li>
-              <Link href="/#AboutION" onClick={toggleMenu}>About</Link>
+              <Link href="/#AboutION" onClick={toggleMenu}>{t("aboutnav", "About")}</Link>
             </li>
             <li>
-              <Link href="/products" onClick={toggleMenu}>Products</Link>
+              <Link href="/products" onClick={toggleMenu}>{t("productnav", "Products")}</Link>
             </li>
             <li>
-              <Link href="#" onClick={toggleMenu}>Contact</Link>
+              <Link href="#" onClick={toggleMenu}>{t("contactnav", "Contact")}</Link>
             </li>
             <li>
               <a
@@ -106,7 +106,7 @@ const Navbar: React.FC = () => {
                 className="block bg-ion-navy text-white text-center py-2 rounded-2xl"
                 onClick={toggleMenu}
               >
-                Login
+                {t("loginnav", "Login")}
               </a>
             </li>
             {/* Untuk mobile, override agar styling selalu seperti scrolled */}
