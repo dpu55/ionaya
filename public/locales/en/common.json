@@ -1,5 +1,51 @@
 {
+    "homenav": "Home",
+    "productnav": "Products",
+    "aboutnav": "About",
+    "contactnav": "Contact",
+    "loginnav": "Login",
     "ion": "ION",
+    "aboutION": {
+        "title": "Go Beyond with ION",
+        "description1": "focuses on health and well-being through high-quality products based on natural ingredients. We are committed to providing innovative solutions that help improve quality of life.",
+        "description2": "With a strong marketing network and a growing community, ION offers business opportunities and a healthy lifestyle for society."
+    },
+    "benefits": {
+        "title": "ION Benefits",
+        "description": "Why choose ION? We offer high-quality products with natural ingredients, cutting-edge innovation, and a strong business network.",
+        "alt1": "Natural Ingredients",
+        "alt2": "Innovation",
+        "alt3": "Business Network",
+        "item1": {
+            "title": "Natural Ingredients",
+            "description": "We only use the best natural ingredients for your health."
+        },
+        "item2": {
+            "title": "Cutting-Edge Innovation",
+            "description": "Our products are developed with the latest technology."
+        },
+        "item3": {
+            "title": "Strong Business Network",
+            "description": "Exciting business opportunities with the support of a large community."
+        }
+    },
+    "products": {
+        "title": "Our Products",
+        "description": "Discover a variety of natural health products from ION that support your healthy lifestyle.",
+        "vitera": {
+            "name": "VITERA",
+            "description": "A premium superfood"
+        },
+        "magna": {
+            "name": "MAGNA",
+            "description": "A natural energy booster."
+        }
+    },
+    "join": {
+        "title": "Join ION",
+        "description": "Be part of the ION community and start your journey toward better health and amazing business opportunities!",
+        "button": "JOIN"
+    },
     "greeting": "Hello, welcome to our website!",
     "about": "About Us",
     "catalogTitle": "PRODUCT CATALOG",

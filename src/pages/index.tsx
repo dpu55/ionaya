@@ -9,6 +9,29 @@ import IonBenefits from "../components/IonBenefits";
 import IonProducts from "../components/IonProducts";
 import JoinION from "../components/JoinION";
 import Footer from "../components/Footer";
+import type { UserConfig as NextI18NextUserConfig } from "next-i18next";
+
+interface ExtendedUserConfig extends NextI18NextUserConfig {
+  default?: unknown; // Add the `default` property
+}
+
+export async function getStaticProps({ locale }: { locale: string }) {
+  const translations = await serverSideTranslations(locale, ['common', 'product']);
+
+  // Cast `userConfig` to the extended type
+  const userConfig = translations._nextI18Next?.userConfig as ExtendedUserConfig;
+
+  // Safely delete the `default` property if it exists
+  if (userConfig?.default) {
+    delete userConfig.default;
+  }
+
+  return {
+    props: {
+      ...translations,
+    },
+  };
+}
 
 const Home: NextPage = () => {
   const { t } = useTranslation('common');
@@ -31,29 +54,5 @@ const Home: NextPage = () => {
     </div>
   );
 };
-
-interface NextI18NextUserConfig {
-  default?: unknown;
-}
-
-export async function getStaticProps({ locale }: { locale: string }) {
-  const translations = await serverSideTranslations(locale, ['common', 'product']);
-
-  if (translations && translations._nextI18Next?.userConfig) {
-    const userConfig = translations._nextI18Next.userConfig as NextI18NextUserConfig;
-    if (userConfig.default) {
-      delete userConfig.default;
-    }
-  }
-
-  return {
-    props: {
-      ...translations,
-    },
-  };
-}
-
-
-
 
 export default Home;

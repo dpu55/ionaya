@@ -1,5 +1,51 @@
 {
+    "homenav": "Beranda",
+    "productnav": "Produk",
+    "aboutnav": "Tentang",
+    "contactnav": "Kontak",
+    "loginnav": "Masuk",
     "ion": "ION",
+    "aboutION": {
+        "title": "Melangkah Lebih Jauh dengan ION",
+        "description1": "berfokus pada kesehatan dan kesejahteraan melalui produk-produk berkualitas tinggi berbasis bahan alami. Kami berkomitmen untuk memberikan solusi inovatif yang membantu meningkatkan kualitas hidup.",
+        "description2": "Dengan jaringan pemasaran yang kuat dan komunitas yang berkembang, ION menghadirkan peluang bisnis serta gaya hidup sehat bagi masyarakat."
+    },
+    "benefits": {
+        "title": "Keunggulan ION",
+        "description": "Mengapa memilih ION? Kami menawarkan produk berkualitas tinggi dengan bahan alami, inovasi terkini, dan jaringan bisnis yang kuat.",
+        "alt1": "Natural Ingredients",
+        "alt2": "Innovation",
+        "alt3": "Business Network",
+        "item1": {
+            "title": "Bahan Alami",
+            "description": "Kami hanya menggunakan bahan alami terbaik untuk kesehatan Anda."
+        },
+        "item2": {
+            "title": "Inovasi Terdepan",
+            "description": "Produk kami dikembangkan dengan teknologi terbaru."
+        },
+        "item3": {
+            "title": "Jaringan Bisnis",
+            "description": "Peluang bisnis menarik dengan dukungan komunitas besar."
+        }
+    },
+    "products": {
+        "title": "Produk Kami",
+        "description": "Temukan berbagai produk kesehatan alami dari ION yang mendukung gaya hidup sehat Anda.",
+        "vitera": {
+            "name": "VITERA",
+            "description": "Makanan super premium."
+        },
+        "magna": {
+            "name": "MAGNA",
+            "description": "Peningkat energi alami."
+        }
+    },
+    "join": {
+        "title": "Bergabung dengan ION",
+        "description": "Jadilah bagian dari komunitas ION dan mulai perjalanan Anda menuju kesehatan yang lebih baik dan peluang bisnis yang luar biasa!",
+        "button": "GABUNG"
+    },
     "greeting": "Halo, selamat datang di website kami!",
     "about": "Tentang Kami",
     "catalogTitle": "KATALOG PRODUK",

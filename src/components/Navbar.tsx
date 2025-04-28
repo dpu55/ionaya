@@ -4,8 +4,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { FiMenu, FiX } from "react-icons/fi";
 import LangSwitcher from "./LangSwitcher";
+import { useTranslation } from "next-i18next";
 
 const Navbar: React.FC = () => {
+  const { t } = useTranslation("common");
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -48,16 +50,16 @@ const Navbar: React.FC = () => {
         {/* DESKTOP MENU */}
         <ul className={`hidden md:flex space-x-6 ${isScrolled ? "text-gray-900" : "text-white"}`}>
           <li>
-            <Link href="/" className="hover:text-ion-green-light">Home</Link>
+            <Link href="/" className="hover:text-ion-green-light">{t("homenav", "Home")}</Link>
           </li>
           <li>
-            <Link href="/#AboutION" className="hover:text-ion-green-light">About</Link>
+            <Link href="/#AboutION" className="hover:text-ion-green-light">{t("aboutnav", "About")}</Link>
           </li>
           <li>
-            <Link href="/products" className="hover:text-ion-green-light">Products</Link>
+            <Link href="/products" className="hover:text-ion-green-light">{t("productnav", "Products")}</Link>
           </li>
           <li>
-            <Link href="#" className="hover:text-ion-green-light">Contact</Link>
+            <Link href="#" className="hover:text-ion-green-light">{t("contactnav", "Contact")}</Link>
           </li>
           <li>
             <a
@@ -66,7 +68,7 @@ const Navbar: React.FC = () => {
                 isScrolled ? "bg-gray-200" : "bg-none"
               }`}
             >
-              Login
+              {t("loginnav", "Login")}
             </a>
           </li>
           <LangSwitcher isScrolled={isScrolled} />

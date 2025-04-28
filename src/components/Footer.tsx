@@ -2,8 +2,10 @@ import React from "react";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook, faInstagram, faTiktok } from "@fortawesome/free-brands-svg-icons";
+import { useTranslation } from "next-i18next";
 
 const Footer: React.FC = () => {
+  const { t } = useTranslation('common'); // Use the 'common' namespace
   return (
     <footer className="bg-gray-900 text-white py-10">
       <div className="max-w-7xl mx-auto px-6 md:px-12 text-center">
@@ -12,22 +14,22 @@ const Footer: React.FC = () => {
           <ul className="flex flex-wrap justify-center space-x-6 text-gray-300">
             <li>
               <Link href="/" className="hover:text-white">
-                Home
+                {t("homenav", "Home")}
               </Link>
             </li>
             <li>
               <Link href="/#AboutION" className="hover:text-white">
-                About
+                {t("aboutnav", "About")}
               </Link>
             </li>
             <li>
               <Link href="/products" className="hover:text-white">
-                Products
+                {t("productnav", "Products")}
               </Link>
             </li>
             <li>
               <Link href="#" className="hover:text-white">
-                Contact
+                {t("contactnav", "Contact")}
               </Link>
             </li>
           </ul>
