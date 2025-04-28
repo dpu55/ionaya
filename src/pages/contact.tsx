@@ -72,7 +72,7 @@ const Contact: React.FC = () => {
                                     href="mailto:info@ionaya.com"
                                     className="text-gray-700 hover:text-ion-green transition"
                                 >
-                                    {t("contact.officemail", "ionfo@ionaya.com")}
+                                    {t("contact.officeemail", "info@ionaya.com")}
                                 </a>
                             </div>
                         </div>
