@@ -60,7 +60,7 @@ const Footer: React.FC = () => {
         {/* Terms & Copyright */}
         <div className="text-gray-400 text-sm">
           <Link href="#" className="hover:text-white">
-            Terms & Conditions
+            {t("termcondition", "Terms & Conditions")}
           </Link>
           <span className="mx-2">|</span>
           <span>
