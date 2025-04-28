@@ -59,7 +59,7 @@ const Navbar: React.FC = () => {
             <Link href="/products" className="hover:text-ion-green-light">{t("productnav", "Products")}</Link>
           </li>
           <li>
-            <Link href="#" className="hover:text-ion-green-light">{t("contactnav", "Contact")}</Link>
+            <Link href="/contact" className="hover:text-ion-green-light">{t("contactnav", "Contact")}</Link>
           </li>
           <li>
             <a
@@ -98,7 +98,7 @@ const Navbar: React.FC = () => {
               <Link href="/products" onClick={toggleMenu}>{t("productnav", "Products")}</Link>
             </li>
             <li>
-              <Link href="#" onClick={toggleMenu}>{t("contactnav", "Contact")}</Link>
+              <Link href="/contact" onClick={toggleMenu}>{t("contactnav", "Contact")}</Link>
             </li>
             <li>
               <a

@@ -28,7 +28,7 @@ const Footer: React.FC = () => {
               </Link>
             </li>
             <li>
-              <Link href="#" className="hover:text-white">
+              <Link href="/contact" className="hover:text-white">
                 {t("contactnav", "Contact")}
               </Link>
             </li>

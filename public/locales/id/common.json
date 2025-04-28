@@ -50,6 +50,23 @@
     "about": "Tentang Kami",
     "catalogTitle": "KATALOG PRODUK",
     "catalogDescription": "Lihat berbagai produk berkualitas dari ION.",
-    "termcondition": "Syarat & Ketentuan"
+    "termcondition": "Syarat & Ketentuan",
+    "contact": {
+        "title": "Hubungi Kami",
+        "description": "Hubungi kami untuk pertanyaan atau dukungan.",
+        "ouroffice": "Kantor Kami",
+        "officephone": "+62 21-2359-9357",
+        "officeemail": "info@ionaya.com",
+        "officeaddress": "Menara Cakrawala Lt. 14, Jl. M.H. Thamrin No.9, Jakarta Pusat, DKI Jakarta 10340",
+        "form": {
+            "name": "Nama Anda",
+            "namePlaceholder": "Masukkan nama Anda",
+            "email": "Email Anda",
+            "emailPlaceholder": "Masukkan email Anda",
+            "message": "Pesan Anda",
+            "messagePlaceholder": "Masukkan pesan Anda",
+            "submit": "Kirim Pesan"
+        }
+    }
 
 }
