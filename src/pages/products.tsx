@@ -83,9 +83,16 @@ const ProductsPage: React.FC = () => {
 export default ProductsPage;
 
 export async function getStaticProps({ locale }: { locale: string }) {
+  const translations = await serverSideTranslations(locale, ['common', 'product']);
+
+  // Safely delete the `default` property if it exists
+  if (translations._nextI18Next?.userConfig && "default" in translations._nextI18Next.userConfig) {
+    delete (translations._nextI18Next.userConfig as Record<string, unknown>).default;
+  }
+
   return {
     props: {
-      ...(await serverSideTranslations(locale, ['common', 'product'])),
+      ...translations,
     },
   };
 }
