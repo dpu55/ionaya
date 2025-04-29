@@ -34,11 +34,11 @@
         "description": "Temukan berbagai produk kesehatan alami dari ION yang mendukung gaya hidup sehat Anda.",
         "vitera": {
             "name": "VITERA",
-            "description": "Makanan super premium."
+            "description": "Makanan Super Premium."
         },
         "magna": {
             "name": "MAGNA",
-            "description": "Peningkat energi alami."
+            "description": "Peningkat Energi Alami"
         }
     },
     "join": {
@@ -53,11 +53,11 @@
     "termcondition": "Syarat & Ketentuan",
     "contact": {
         "title": "Hubungi Kami",
-        "description": "Hubungi kami untuk pertanyaan atau dukungan.",
+        "description": "Hubungi kami untuk pertanyaan atau bantuan.",
         "ouroffice": "Kantor Kami",
         "officephone": "+62 21-2359-9357",
         "officeemail": "info@ionaya.com",
-        "officeaddress": "Menara Cakrawala Lt. 14, Jl. M.H. Thamrin No.9, Jakarta Pusat, DKI Jakarta 10340",
+        "officeaddress": "Menara Cakrawala Lt. 14,<br/> Jl. M.H. Thamrin No.9,<br/> Jakarta Pusat,<br/> DKI Jakarta 10340",
         "form": {
             "name": "Nama Anda",
             "namePlaceholder": "Masukkan nama Anda",

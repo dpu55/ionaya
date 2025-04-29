@@ -7,6 +7,7 @@ import { FiMapPin, FiPhone, FiMail } from "react-icons/fi";
 import Image from "next/image";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import { Trans } from "react-i18next";
 
 const Contact: React.FC = () => {
     const { t } = useTranslation("common");
@@ -38,11 +39,20 @@ const Contact: React.FC = () => {
                         {/* Office Image */}
                         <div className="md:w-1/2 h-64 md:h-auto relative">
                             <Image
+                                src="/images/office_lobby.jpg"
+                                alt="Office Lobby"
+                                fill // ✅ Ensures the image fills the parent container
+                                style={{ objectFit: "cover" }} // ✅ Use `style` for `objectFit`
+                            /* className="rounded-t-lg md:rounded-l-lg" */
+                            />
+                        </div>
+                        <div className="md:w-1/2 h-64 md:h-auto relative">
+                            <Image
                                 src="/images/office1.png"
                                 alt="Our Office"
-                                layout="fill" // ✅ Ensures the image fills the parent container
+                                fill // ✅ Ensures the image fills the parent container
                                 objectFit="cover" // ✅ Ensures the image is cropped properly
-                                className="rounded-t-lg md:rounded-l-lg"
+                            /* className="rounded-t-lg md:rounded-l-lg" */
                             />
                         </div>
 
@@ -52,9 +62,11 @@ const Contact: React.FC = () => {
                                 {t("contact.ouroffice", "Our Office")}
                             </h2>
                             <div className="flex items-start space-x-3">
-                                <FiMapPin className="text-ion-green mt-1" size={32} />
+                                <FiMapPin className="text-ion-green mt-1" size={48} />
                                 <p className="text-gray-700">
-                                    {t("contact.officeaddress")}
+                                    <Trans i18nKey="contact.officeaddress">
+                                        Menara Cakrawala Lt. 14,<br /> Jl. M.H. Thamrin No.9, Jakarta Pusat, DKI Jakarta 10340
+                                    </Trans>
                                 </p>
                             </div>
                             <div className="flex items-center space-x-3">
@@ -63,7 +75,7 @@ const Contact: React.FC = () => {
                                     href="tel:+622123599357"
                                     className="text-gray-700 hover:text-ion-green transition"
                                 >
-                                    {t("contact.officephone", "+62 21 2359 9357")}
+                                    {t("contact.officephone", "+62 21-2359-9357")}
                                 </a>
                             </div>
                             <div className="flex items-center space-x-3">
