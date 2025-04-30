@@ -50,9 +50,9 @@ const Contact: React.FC = () => {
                             <Image
                                 src="/images/office1.png"
                                 alt="Our Office"
-                                fill // ✅ Ensures the image fills the parent container
-                                objectFit="cover" // ✅ Ensures the image is cropped properly
-                            /* className="rounded-t-lg md:rounded-l-lg" */
+                                fill
+                                style={{ objectFit: "cover" }}
+                                className="rounded-t-lg md:rounded-l-lg"
                             />
                         </div>
 
@@ -62,10 +62,10 @@ const Contact: React.FC = () => {
                                 {t("contact.ouroffice", "Our Office")}
                             </h2>
                             <div className="flex items-start space-x-3">
-                                <FiMapPin className="text-ion-green mt-1" size={48} />
+                                <FiMapPin className="text-ion-green mt-1" size={20} />
                                 <p className="text-gray-700">
                                     <Trans i18nKey="contact.officeaddress">
-                                        Menara Cakrawala Lt. 14,<br /> Jl. M.H. Thamrin No.9, Jakarta Pusat, DKI Jakarta 10340
+                                        Menara Cakrawala Lt. 14<br /> Jl. M.H. Thamrin No.9<br /> Jakarta Pusat<br /> DKI Jakarta 10340
                                     </Trans>
                                 </p>
                             </div>
