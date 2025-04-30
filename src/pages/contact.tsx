@@ -52,7 +52,7 @@ const Contact: React.FC = () => {
                                 alt="Our Office"
                                 fill
                                 style={{ objectFit: "cover" }}
-                                className="rounded-t-lg md:rounded-l-lg"
+                                /* className="rounded-t-lg md:rounded-l-lg" */
                             />
                         </div>
 
