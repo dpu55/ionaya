@@ -5,6 +5,10 @@
     "contactnav": "Kontak",
     "loginnav": "Masuk",
     "ion": "ION",
+    "followus": "Ikuti kami:",
+    "termcondition": "Syarat & Ketentuan",
+    "termsIntro": "Berikut adalah syarat dan ketentuan kami. Silakan baca dengan seksama.",
+    "loadingDocument": "Memuat dokumen…",
     "aboutION": {
         "title": "Melangkah Lebih Jauh dengan ION",
         "description1": "berfokus pada kesehatan dan kesejahteraan melalui produk-produk berkualitas tinggi berbasis bahan alami. Kami berkomitmen untuk memberikan solusi inovatif yang membantu meningkatkan kualitas hidup.",
@@ -50,7 +54,6 @@
     "about": "Tentang Kami",
     "catalogTitle": "KATALOG PRODUK",
     "catalogDescription": "Lihat berbagai produk berkualitas dari ION.",
-    "termcondition": "Syarat & Ketentuan",
     "contact": {
         "title": "Hubungi Kami",
         "description": "Hubungi kami untuk pertanyaan atau bantuan.",
@@ -67,6 +70,55 @@
             "messagePlaceholder": "Masukkan pesan Anda",
             "submit": "Kirim Pesan"
         }
+    },
+    "kodeEtikTitle": "Kode Etik Member ION",
+    "kebijakanTitle": "Kebijakan Kerahasiaan Data",
+    "kebijakanContent": {
+        "1": {
+            "title": "1. Harga Produk",
+            "content": "Harga akhir yang berlaku adalah jumlah yang tercantum pada keranjang belanja, invoice, atau halaman pembayaran (payment page). Jika terjadi perubahan harga sebelum transaksi selesai, total belanja di halaman pembayaran menjadi acuan sah. Biaya tambahan (jika ada) seperti pajak atau biaya layanan akan diinformasikan secara transparan."
+        },
+        "2": {
+            "title": "2. Metode Pembayaran",
+            "content": "Pembayaran dapat dilakukan melalui metode yang tersedia di platform, termasuk tetapi tidak terbatas pada:",
+            "list": [
+                "ION Cash Wallet",
+                "Transfer bank (virtual account/kliring)",
+                "Kartu kredit/debit",
+                "QRIS atau sistem pembayaran instan lainnya"
+            ]
+        },
+        "3": {
+            "title": "3. Kewajiban Pelanggan",
+            "list": [
+                "Memastikan informasi pembayaran (nomor rekening, kartu) valid dan dimiliki secara sah.",
+                "Mengisi data diri (nama, alamat, kontak) secara lengkap dan akurat.",
+                "Melakukan konfirmasi pembayaran sesuai batas waktu yang ditentukan (misal: upload bukti transfer maksimal 24 jam setelah pemesanan)."
+            ]
+        },
+        "4": {
+            "title": "4. Pengelolaan Data",
+            "content": "PT Ionaya Optima Natura mengumpulkan dan menyimpan data transaksi (riwayat belanja, metode pembayaran, bukti transfer) untuk keperluan verifikasi, penyelesaian masalah transaksi, dan peningkatan layanan. Data tidak akan dibagikan ke pihak ketiga kecuali untuk proses penyelesaian transaksi atau kewajiban hukum."
+        },
+        "5": {
+            "title": "5. Verifikasi & Konfirmasi Transaksi",
+            "list": [
+                "Untuk transaksi non-tunai, PT Ionaya Optima Natura berhak melakukan verifikasi via SMS/email/telepon guna memastikan keabsahan pembayaran.",
+                "Transaksi dianggap sah setelah pembayaran diterima dan dikonfirmasi oleh sistem atau tim verifikasi kami.",
+                "Untuk pembayaran via transfer bank, pastikan Anda mengirimkan bukti transfer yang jelas dan sesuai nominal."
+            ]
+        },
+        "6": {
+            "title": "6. Batas Waktu Pembayaran",
+            "list": [
+                "Pembayaran tidak diterima dalam 24 jam (untuk transfer bank/e-wallet).",
+                "Verifikasi gagal setelah 2x percobaan.",
+                "Terdeteksi kecurangan atau ketidaksesuaian data."
+            ]
+        },
+        "7": {
+            "title": "7. Perubahan Ketentuan",
+            "content": "Syarat dan ketentuan ini dapat diperbarui sesuai kebutuhan bisnis atau regulasi. Perubahan akan diumumkan melalui platform resmi PT Ionaya Optima Natura."
+        }
     }
-
 }
