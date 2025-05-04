@@ -1,0 +1,55 @@
+{
+    "termcondition": "Terms & Conditions",
+    "termsDescription": "These terms and conditions govern the use of services and products provided by PT Ionaya Optima Natura. By using our services, you agree to comply with these terms and conditions.",
+    "termsIntro": "Here are our terms and conditions. Please read them carefully.",
+    "kodeEtikTitle": "ION Member Code of Ethics",
+    "kebijakanTitle": "Privacy Policy",
+    "kebijakanContent": {
+        "1": {
+            "title": "1. Product Price",
+            "content": "The final price that applies is the amount listed on the shopping cart, invoice, or payment page. If there is a price change before the transaction is completed, the total shopping amount on the payment page becomes the valid reference. Additional fees (if any) such as taxes or service fees will be transparently informed."
+        },
+        "2": {
+            "title": "2. Payment Methods",
+            "content": "Payments can be made through the available methods on the platform, including but not limited to:",
+            "list": [
+                "ION Cash Wallet",
+                "Bank transfer (virtual account)",
+                "Credit/debit card",
+                "QRIS or other instant payment systems"
+            ]
+        },
+        "3": {
+            "title": "3. Customer Obligations",
+            "list": [
+                "Ensure payment information (account number, card) is valid and legally owned.",
+                "Fill in personal data (name, address, contact) completely and accurately.",
+                "Confirm payment within the specified time limit (e.g., upload transfer proof within 24 hours after ordering)."
+            ]
+        },
+        "4": {
+            "title": "4. Data Management",
+            "content": "PT Ionaya Optima Natura collects and stores transaction data (shopping history, payment methods, transfer proof) for verification purposes, transaction problem resolution, and service improvement. Data will not be shared with third parties except for transaction resolution processes or legal obligations."
+        },
+        "5": {
+            "title": "5. Transaction Verification & Confirmation",
+            "list": [
+                "For non-cash transactions, PT Ionaya Optima Natura has the right to verify via SMS/email/phone to ensure payment validity.",
+                "Transactions are considered valid after payment is received and confirmed by our system or verification team.",
+                "For bank transfer payments, make sure you send clear transfer proof and the correct amount."
+            ]
+        },
+        "6": {
+            "title": "6. Payment Deadline",
+            "list": [
+                "Payment is not received within 24 hours (for bank transfer/e-wallet).",
+                "Verification fails after 2 attempts.",
+                "Fraud or data inconsistency is detected."
+            ]
+        },
+        "7": {
+            "title": "7. Terms Changes",
+            "content": "These terms and conditions can be updated according to business needs or regulations. Changes will be announced through the official platform of PT Ionaya Optima Natura."
+        }
+    }
+}
