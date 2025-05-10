@@ -48,6 +48,9 @@ declare global {
 interface CloudflarePlayer {
   addEventListener: (event: string, handler: () => void) => void;
   removeEventListener: (event: string, handler: () => void) => void;
+  paused: boolean;
+  play: () => void;
+  pause: () => void;
 }
 
 const VideoSlider: React.FC = () => {
@@ -66,8 +69,12 @@ const VideoSlider: React.FC = () => {
   };
 
   const handleSwipe = (info: PanInfo) => {
-    if (info.offset.x < -50) handleNext();
-    else if (info.offset.x > 50) handlePrev();
+    const swipeThreshold = 50; // Minimum swipe distance to trigger a slide change
+    if (info.offset.x < -swipeThreshold) {
+      handleNext(); // Swipe left
+    } else if (info.offset.x > swipeThreshold) {
+      handlePrev(); // Swipe right
+    }
   };
 
   const current = slides[currentIndex];
@@ -107,10 +114,10 @@ const VideoSlider: React.FC = () => {
               animate="animate"
               exit="exit"
               transition={{ duration: 0.6, ease: "easeInOut" }}
-              className="w-full h-full absolute top-0 left-0"
               drag="x"
               dragConstraints={{ left: 0, right: 0 }}
-              onDragEnd={(_, info) => handleSwipe(info)}
+              onDragEnd={(_, info) => handleSwipe(info)} // Handle swipe gestures
+              className="w-full h-full absolute top-0 left-0 touch-pan-y"
             >
               {current.type === "video" ? (
                 <>
@@ -138,6 +145,16 @@ const VideoSlider: React.FC = () => {
 
                   {/* Mobile Video */}
                   <div className="block md:hidden w-full relative aspect-[9/16] overflow-hidden">
+                    {/* Invisible overlay for touch-pause functionality */}
+                    <div
+                      className="absolute inset-0 z-20"
+                      onClick={() => {
+                        const player = window.Stream?.(iframeRefMobile.current!);
+                        if (player) player.paused ? player.play() : player.pause();
+                      }}
+                      onTouchStart={() => window.Stream?.(iframeRefMobile.current!)?.pause()}
+                      onTouchEnd={() => window.Stream?.(iframeRefMobile.current!)?.play()}
+                    />
                     <iframe
                       ref={iframeRefMobile}
                       src={`https://customer-cd95u9cxbeh5szoe.cloudflarestream.com/${current.mobile}/iframe?autoplay=true&controls=false&muted=true`}
@@ -145,7 +162,7 @@ const VideoSlider: React.FC = () => {
                       loading="lazy"
                       allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
                       allowFullScreen
-                    ></iframe>
+                    />
                   </div>
                 </>
               ) : (
@@ -168,6 +185,9 @@ const VideoSlider: React.FC = () => {
                   />
                 </>
               )}
+            </motion.div>
+          )}
+        </AnimatePresence>
 
               {/* Slide Indicators */}
               <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 flex space-x-3 z-10">
@@ -181,9 +201,6 @@ const VideoSlider: React.FC = () => {
                   />
                 ))}
               </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
 
         {/* Navigation Arrows */}
         <div className="hidden md:block">

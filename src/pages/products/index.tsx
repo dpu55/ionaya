@@ -27,7 +27,7 @@ const ProductCard: React.FC<{
         </div>
         <div className="flex justify-between items-center">
           <span className="font-bold text-ion-green">{product.price}</span>
-          <Link href="#" className="text-ion-navy hover:underline font-semibold text-sm">
+          <Link href={`/products/${product.id}`} className="text-ion-navy hover:text-ion-navy-light font-semibold text-sm">
             {t('detailProduct', 'Detail Produk')}
           </Link>
         </div>
