@@ -67,6 +67,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
   const translations = await serverSideTranslations(locale as string, ['common', 'product']);
 
+  // Safely delete the `default` property if it exists
+  if (translations._nextI18Next?.userConfig && "default" in translations._nextI18Next.userConfig) {
+    delete (translations._nextI18Next.userConfig as Record<string, unknown>).default;
+  }
+
   // Fetch product data based on ID (replace this with your actual data source)
   const products = [
     { id: 1, name: "Product 1", price: "$10", image: "/images/product1.jpg", description: "Description for Product 1" },
