@@ -150,7 +150,13 @@ const VideoSlider: React.FC = () => {
                       className="absolute inset-0 z-20"
                       onClick={() => {
                         const player = window.Stream?.(iframeRefMobile.current!);
-                        if (player) player.paused ? player.play() : player.pause();
+                        if (player) {
+                          if (player.paused) {
+                            player.play();
+                          } else {
+                            player.pause();
+                          }
+                        }
                       }}
                       onTouchStart={() => window.Stream?.(iframeRefMobile.current!)?.pause()}
                       onTouchEnd={() => window.Stream?.(iframeRefMobile.current!)?.play()}
